@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MarvelDiscovery</string>
+    <string name="marvel_discovery">Marvel Discovery</string>
+    <string name="dr_strange">Dr. Strange</string>
+    <string name="a_strange_doctor">A strange doctor</string>
+    <string name="find_new_character">Find New Character!</string>
+    <string name="placeholder">Placeholder</string>
 </resources>
