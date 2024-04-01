@@ -9,6 +9,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.codepath.asynchttpclient.AsyncHttpClient
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler
@@ -20,7 +23,12 @@ import java.security.MessageDigest
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
-    var resultsArray: JSONArray? = null
+    //var resultsArray: JSONArray? = null
+
+    private lateinit var marvelImages: MutableList<String>
+    private lateinit var marvelNames: MutableList<String>
+    private lateinit var marvelInfo: MutableList<String>
+    private lateinit var rvMarvel: RecyclerView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,12 +38,17 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val name = findViewById<TextView>(R.id.name)
-        val pic = findViewById<ImageView>(R.id.image)
-        val desc = findViewById<TextView>(R.id.description)
-        val button = findViewById<Button>(R.id.button)
+
+        marvelImages = mutableListOf()
+        marvelNames = mutableListOf()
+        marvelInfo = mutableListOf()
+        rvMarvel = findViewById(R.id.marvel_list)
+//        val name = findViewById<TextView>(R.id.name)
+//        val pic = findViewById<ImageView>(R.id.image)
+//        val desc = findViewById<TextView>(R.id.description)
+//        val button = findViewById<Button>(R.id.button)
         getCharacters()
-        getNextCharacter(button, pic, name, desc)
+        //getNextCharacter(button, pic, name, desc)
     }
 
     private fun getCharacters() {
@@ -50,7 +63,28 @@ class MainActivity : AppCompatActivity() {
         client[url, object : JsonHttpResponseHandler() {
             override fun onSuccess(statusCode: Int, headers: Headers, json: JsonHttpResponseHandler.JSON) {
                 Log.d("Marvel", "response successful $json")
-                resultsArray = json.jsonObject.optJSONObject("data")?.getJSONArray("results")
+                val resArray = json.jsonObject.optJSONObject("data")?.getJSONArray("results")
+
+                if (resArray != null) {
+                    for (i in 0 until resArray.length()) {
+                        val character = resArray.getJSONObject(i)
+                        val thumbnail = character.getJSONObject("thumbnail")
+                        val path = thumbnail.getString("path").substring(7)
+                        val extension = thumbnail.getString("extension")
+                        val imageUrl = "https://$path.$extension"
+                        val charName = character?.getString("name")
+                        val charDesc = character?.getString("description")
+                        marvelImages.add(imageUrl)
+                        if (charName != null) marvelNames.add(charName)
+                        if (charDesc != null) marvelInfo.add(charDesc)
+                    }
+
+                    val adapter = MarvelAdapter(marvelNames, marvelImages, marvelInfo)
+                    rvMarvel.adapter = adapter
+                    rvMarvel.layoutManager = LinearLayoutManager(this@MainActivity)
+                    rvMarvel.addItemDecoration(DividerItemDecoration(this@MainActivity, LinearLayoutManager.VERTICAL))
+                }
+
             }
 
             override fun onFailure(
@@ -62,29 +96,6 @@ class MainActivity : AppCompatActivity() {
                 Log.d("Marvelous Error", errorResponse)
             }
         }]
-    }
-
-    private fun getNextCharacter(button: Button, image: ImageView, name: TextView, desc: TextView) {
-        button.setOnClickListener {
-            val choice = Random.nextInt(19)
-            val character = resultsArray?.getJSONObject(choice)
-            val thumbnail = character?.getJSONObject("thumbnail")
-            val path = thumbnail?.getString("path")?.substring(7)
-            val extension = thumbnail?.getString("extension")
-            val imageUrl = "https://$path.$extension"
-            val charName = character?.getString("name")
-            val charDesc = character?.getString("description")
-            Log.d("Hello", imageUrl)
-            Glide.with(this)
-                .load(imageUrl)
-                .into(image)
-            name.text = charName
-            if (charDesc != "") {
-                desc.text = charDesc
-            } else {
-                desc.text = "Uh Oh! No description for this character :("
-            }
-        }
     }
 
     private fun stringToMd5(s: String): Any {
