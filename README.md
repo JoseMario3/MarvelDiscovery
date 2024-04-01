@@ -1,28 +1,29 @@
-# AND101 Project 6 - CYOAPI Part 2: RecyclerView Edition
+# AND101 Project 7 - CYOAPI Part 3: Beautified
 
 Submitted by: **Jose Folgar**
 
-Time spent: **5** hours spent in total
+Time spent: **X** hours spent in total
 
 ## Summary
 
-**Marvel Discovery** is an android app that displays a scrollable list of characters from the Marvel API
+**Marvel Discovery** is an android app that displays a scrollable list of characters from the Marvel API.
 
-If I had to describe this project in three (3) emojis, they would be: **eyeroll emoji, disappointed emoji, clap emoji**
+If I had to describe this project in three (3) emojis, they would be: **beach emoji, smile emoji, glitter emoji**
 
 ## Application Features
 
 The following REQUIRED features are completed:
 
-- [x] Make an API call to an API of your choice using AsyncHTTPClient
-- [x] Implement a RecyclerView to display a list of entries from the API
-- [x] Display at least three (3) pieces of data for each RecyclerView item
+- [x] App contains a RecyclerView that displays a list of scrollable data
+- [x] App displays at least two (2) pieces of data for each RecyclerView item
+- [ ] Use a downloadable font with custom color and size
+- [ ] Modify the theme of the app in `themes.xml`
+- [ ] Define and apply at least one style in **either** `themes.xml` or a new file `styles.xml`
 
 The following STRETCH features are implemented:
 
-- [ ] Add a UI element for the user to interact with API further
-- [x] Show a `Toast` or `Snackbar` when an item is clicked
-- [ ] Add item dividers with `DividerItemDecoration`
+- [ ] Update the night theme to use different versions of styles when in dark mode
+- [ ] Use different drawables when in dark mode
 
 The following EXTRA features are implemented:
 
@@ -32,9 +33,7 @@ The following EXTRA features are implemented:
 
 Here's a video / GIF that demos all of the app's implemented features:
 
-<img src='https://i.imgur.com/NDEAY0Q.gif' title='Video Demo' width='' alt='Video Demo' />
-
-https://imgur.com/gallery/1fXIOQg
+<img src='' title='Video Demo' width='' alt='Video Demo' />
 
 GIF created with **Lice CAP**
 
@@ -51,12 +50,6 @@ you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
     http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
