@@ -2,7 +2,7 @@
 
 Submitted by: **Jose Folgar**
 
-Time spent: **X** hours spent in total
+Time spent: **1** hour spent in total
 
 ## Summary
 
