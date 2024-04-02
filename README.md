@@ -16,9 +16,9 @@ The following REQUIRED features are completed:
 
 - [x] App contains a RecyclerView that displays a list of scrollable data
 - [x] App displays at least two (2) pieces of data for each RecyclerView item
-- [ ] Use a downloadable font with custom color and size
-- [ ] Modify the theme of the app in `themes.xml`
-- [ ] Define and apply at least one style in **either** `themes.xml` or a new file `styles.xml`
+- [x] Use a downloadable font with custom color and size
+- [x] Modify the theme of the app in `themes.xml`
+- [x] Define and apply at least one style in **either** `themes.xml` or a new file `styles.xml`
 
 The following STRETCH features are implemented:
 
@@ -33,7 +33,9 @@ The following EXTRA features are implemented:
 
 Here's a video / GIF that demos all of the app's implemented features:
 
-<img src='' title='Video Demo' width='' alt='Video Demo' />
+<img src='https://i.imgur.com/3OAU2zO.gif' title='Video Demo' width='' alt='Video Demo' />
+
+https://imgur.com/gallery/1CIkBEd
 
 GIF created with **Lice CAP**
 
