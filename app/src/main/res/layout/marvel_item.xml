@@ -3,17 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <TextView
         android:id="@+id/marvel_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="182dp"
         android:layout_marginTop="23dp"
         android:layout_marginBottom="24dp"
-        android:text="TextView"
+        android:text="Dr. Strange"
+        android:fontFamily="@font/homemade_apple"
+        android:textAppearance="@style/TextAppearance.header"
         app:layout_constraintBottom_toTopOf="@+id/marvel_image"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,6 +26,7 @@
         android:layout_marginStart="43dp"
         android:layout_marginEnd="43dp"
         android:layout_marginBottom="19dp"
+        android:contentDescription="I am an Image!"
         app:layout_constraintBottom_toTopOf="@+id/marvel_info"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,6 +39,7 @@
         android:layout_marginStart="43dp"
         android:layout_marginTop="19dp"
         android:layout_marginEnd="43dp"
+        android:fontFamily="@font/amiko"
         android:text="Uh Oh! No description for this character :("
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
